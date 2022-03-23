@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Company } from 'src/app/models/company';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'app-show-company',
@@ -8,13 +11,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ShowCompanyComponent implements OnInit {
 
-  search:FormGroup;
+  searchForm:FormGroup;
   viewIsTrue:boolean=false;
-  compCode:string="";
+  companycode:string="";
   value:string="";
-  constructor() { 
-    this.search=new FormGroup({
-      "code":new FormControl("",[Validators.required])
+  company: Company[]=[];
+
+  constructor(private companyService:CompanyService,
+    private router:Router) { 
+    this.searchForm=new FormGroup({
+      companycode:new FormControl("",[Validators.required])
     })
   }
 
@@ -22,9 +28,10 @@ export class ShowCompanyComponent implements OnInit {
   }
 
   findCompany(){
- //alert("button is clicked")
-  this.compCode=this.value;
-  console.log(this.compCode)
-  //call findcompanycode api
+  this.companycode=this.searchForm.value
+  var obj=JSON.parse(JSON.stringify(this.companycode))
+  this.companyService.findCompany(obj.companycode).subscribe((res:any)=>{
+  this.company=res
+  console.log("this.company"+JSON.stringify(this.company))});
   }
 }

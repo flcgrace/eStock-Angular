@@ -1,35 +1,43 @@
-<h3>Create Employee</h3>
-<div  [hidden]="submitted" style="width: 400px;">
-  <form >
-    <div class="form-group" style="text-align: center;">
+<h3 style="text-align: center;">Register Company</h3>
+<div class="container" [hidden]="submitted" style="width: 400px;" *ngIf="!successMsg">
+  <form [formGroup]="addForm" (ngSubmit)="registerCompany()" >
+    <div class="form-group" >
       <label for="name">Company Code</label>
-      <input type="text" class="form-control" id="ccode" name="ccode">
+      <input type="text" class="form-control" id="ccode" formControlName="ccode" name="ccode">
     </div>
 
     <div class="form-group">
       <label for="name">Company Name</label>
-      <input type="text" class="form-control" id="cname" name="cname">
+      <input type="text" class="form-control" id="cname" formControlName="cname" name="cname">
     </div>
 
     <div class="form-group">
         <label for="name">Company CEO</label>
-        <input type="text" class="form-control" id="cceo" name="cceo">
+        <input type="text" class="form-control" id="cceo"formControlName="cceo"  name="cceo">
       </div>
 
     <div class="form-group">
       <label for="name">Company Website</label>
-      <input type="text" class="form-control" id="cweb"name="cweb">
+      <input type="text" class="form-control" id="cweb" formControlName="cweb" name="cweb">
     </div>
 
     <div class="form-group">
         <label for="name">Company Turnover</label>
-        <input type="text" class="form-control" id="cturn"name="cturn">
-      </div>
+        <input type="text" class="form-control" id="cturn" formControlName="cturn" name="cturn">
+    </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <div class="form-group">
+      <label for="name">Stock Exchange</label>
+      <input type="text" class="form-control" id="stock" formControlName="stock" name="stock">
+  </div>
+
+    <button type="submit" style="margin-right: 16px" class="btn btn-success" [disabled]="addForm.invalid">Submit</button>
+    <button type="reset" style="margin-right: 16px" class="btn btn-danger" (click)="reset()">Reset</button>
   </form>
 </div>
 
-<div [hidden]="!submitted">
-  <h4>You submitted successfully!</h4>
+<div class="alert alert-success" *ngIf="!!successMsg">
+  <div>{{successMsg}}
+  <button type="button" class="btn btn-primary" (click)="goToPage()">View Company</button>
+  </div>
 </div>

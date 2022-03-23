@@ -24,7 +24,9 @@ export class CompanyListComponent implements OnInit {
   }
   deleteCompany(code:string){
     console.log(code);
-  
+    this.companyService.deleteCompany(code).subscribe((res:any)=>{
+      this.successMessage="Company SuccessFully"
+    });
   }
 
 }
