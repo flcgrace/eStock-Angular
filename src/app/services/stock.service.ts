@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Stock } from '../models/stock';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,11 @@ export class StockService {
   constructor(private http: HttpClient) { }
 
   getStock(code:String,from:String,to:String){
-    return this.http.get(this.host+"/get/"+code+"/"+from+"T06:07:22.2695666/"+to+"T07:07:22.2695666");
+    console.log("URL-->"+this.host+"/get/"+code+"/"+from+"/"+to)
+    return this.http.get(this.host+"/get/"+code+"/"+from+"/"+to);
   }
 
-  addStock(){
-
+  addStock(stock:Stock){
+    return this.http.post(this.host+"/add/",stock)
   }
 }

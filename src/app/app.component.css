@@ -1,5 +1,16 @@
+.p-1{
+    border-bottom: 1px solid #ebebeb;
+    text-decoration: violet;
+}
+#bottomFooter{
+    background-color: #031b2e;
+}
+#bottomFooter p{
+    color:white;
+}
 .footer{
-    height:30px;
+    
+    position: relative;
 }
 .nav-link{
     font-size: large;

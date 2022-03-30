@@ -1,31 +1,54 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-  <a class="navbar-brand" href="#"><img 
-    src="https://th.bing.com/th/id/OIP.C8256D_mv2MM862-6AuWaAHaHa?w=198&h=198&c=7&r=0&o=5&pid=1.7" 
-    alt="logo" style="width:40px;"></a>
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a routerLink="company-list" class="nav-link" routerLinkActive="active">List All Companies</a>
-    </li>
-    <li class="nav-item">
-        <a routerLink="add-company" class="nav-link" routerLinkActive="active">Add Company</a>
-    </li>
-    <!-- <li class="nav-item">
-        <a routerLink="stock-data" class="nav-link" routerLinkActive="active">Stock Data</a>
-    </li>    -->
-    <li class="nav-item">
-      <a routerLink="show-company" class="nav-link" routerLinkActive="active">Company Search</a>
-    </li> 
-  </ul>
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" id="bt" type="button" 
-    data-toggle="dropdown" >Stock
-    </button>
-    <ul class="dropdown-menu">
-      <li><a routerLink="stock-data" routerLinkActive="active">Get Stock</a></li>
-      <li><a routerLink="add-stock" routerLinkActive="active">Add Stock</a></li>
-    </ul>
-  </div>
+<header>
+ <div class="p-1" id="topHeader">
+   <div class="container">
+     <div class="row">
+       <div class="col-12 text-center">
+        E-Stock Market
+       </div>
+     </div>
+   </div>
+ </div>
+ <div id="bottomHeader">
+   <div class="container-fluid">
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+      <a class="navbar-brand" href="#"><img 
+        src="https://th.bing.com/th/id/OIP.C8256D_mv2MM862-6AuWaAHaHa?w=198&h=198&c=7&r=0&o=5&pid=1.7" 
+        alt="logo" style="width:40px;"></a>
+      <!-- Links -->
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id="bt" type="button" 
+        data-toggle="dropdown" >Stock
+        </button>
+        <ul class="dropdown-menu">
+          <li><a routerLink="stock-data" routerLinkActive="active">Get Stock</a></li>
+          <li><a routerLink="add-stock" routerLinkActive="active">Add Stock</a></li>
+        </ul>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a routerLink="company-list" class="nav-link" routerLinkActive="active">Companies List</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="add-company" class="nav-link" routerLinkActive="active">Add Company</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a routerLink="stock-data" class="nav-link" routerLinkActive="active">Stock Data</a>
+        </li>    -->
+        <li class="nav-item">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input #code type="text" class="form-control" placeholder="Search" name="search">
+            </div>
+            <button type="submit" class="btn btn-default" (click)="goTo(code.value)">Submit</button>
+          </form>
+          <!-- <a routerLink="show-company" class="nav-link" routerLinkActive="active">Company Search</a> -->
+        </li> 
+      </ul>
+      <router-outlet></router-outlet>
+      </nav>
+   </div>
+ </div>
+</header>
   <!-- <ul class="navbar-nav navbar-right">
     <li><a href="#"> Sign Up</a></li>
     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -35,25 +58,18 @@
       <input #code type="text" class="form-control" placeholder="Search" name="search">
     </div>
     <button type="submit" class="btn btn-default" (click)="goTo(code.value)">Submit</button>
-  </form> -->
-</nav>
-  
+  </form> --> 
   
   <div class="page-body"> 
-    <div class="background-image"> 
-    <br>
-    <h2 style="text-align: center;">E-Stock Market</h2>
-    <hr>  
-    <div class="card">
-      <div class="card-body">
     <router-outlet></router-outlet>
-      </div>
-    </div>
-  </div>
   </div>
   
-  <footer class="footer">
-    <div class="container">
-        <span>All Rights Reserved 2019 @E-Stock</span>
+  <footer class="full-footer">
+    <div class="container-fluid bottom-footer pt-2">
+      <div class="row">
+        <div class="col-12 text-center">
+        <p>All Rights Reserved 2019 @E-Stock</p>
+        </div>
+      </div>
     </div>
   </footer>

@@ -20,6 +20,10 @@ export class CompanyService {
     return this.http.delete(this.host+"/delete/"+code);
   }
 
+  getCompanyNames(){
+    return this.http.get(this.host+"/getall/companynames");
+  }
+
   findCompany(code:any){
     this.url=this.host+"/info/"+code
     console.log("url is "+this.url)
