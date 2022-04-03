@@ -19,14 +19,15 @@ export class AppComponent {
     private show:ShowCompanyComponent,
     private companyService:CompanyService){}
 
-   goTo(code:string){
-     this.companyService.findCompany(code).subscribe((res:any)=>{
-      this.company=res
-      this.show.findCompany(this.company)
-      });
+  //  goTo(code:string){
+  //    this.companyService.findCompany(code).subscribe((res:any)=>{
+  //     this.company=res
+  //     localStorage.setItem('search',JSON.stringify(this.company))
+  //     });
      
-    //  localStorage.setItem('code',code)
-    //  this.show.findCompany();
-    //  this.router.navigate(['/show-company'])
-   }
+  //   //  localStorage.setItem('code',code)
+  //   //this.router.navigate(['/show-company'])
+  //   this.router.navigateByUrl('/show-company').then(this.show.findCompany);
+
+  //  }
 }

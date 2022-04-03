@@ -1,15 +1,16 @@
-<!-- <div style="width: 400px;">
-  <form [formGroup]="searchForm"  (ngSubmit)="findCompany()">
+<div class="container" style="width: 400px;margin-top: 30px;">
+  <form [formGroup]="searchForm"  (ngSubmit)="findCompany(code.value)">
     <div class="input-group input-group-lg">
-      <input type="text" class="form-control" placeholder="Enter Company Code" formControlName="companycode">
+      <input #code type="text" class="form-control" placeholder="Enter Company Code" formControlName="companycode">
       <div class="input-group-btn">
-        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        <button class="btn btn-default" type="submit" ><i class="glyphicon glyphicon-search"></i></button>
       </div>
     </div>
   </form>
-</div>  -->
+</div>  
 
-<div class="panel panel-primary" *ngIf="(company | keyvalue)?.length" >
+<div *ngIf="!!successmsg" style="margin-top: 50px;">
+  <div  class="panel panel-primary" *ngIf="(company | keyvalue)?.length" >
     <div class="panel-heading">
       <h2>Companies List</h2>
     </div>
@@ -23,6 +24,7 @@
             <th>Website</th>
             <th>Company Name</th>
             <th>Stock Exchange</th>
+            <th>Latest Stock</th>
           </tr>
         </thead>
         <tbody>
@@ -30,11 +32,14 @@
               <td *ngFor="let item of company | keyvalue">
                 {{ item.value}}
               </td>
+              <td>
+                {{latestStockPrice}}
+              </td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
-  <!-- <div *ngIf="!(company | keyvalue)?.length">
-    <p class="error">Oops!!! Company does not exist </p>
-  </div> -->
+  </div> 
+</div>
+
+ 
